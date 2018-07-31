@@ -192,6 +192,10 @@ public class frmMain extends JFrame {
     }
 
     private void mnuCustomerDetailsActionPerformed(ActionEvent e){
+        frmAccountDetails myAccountDEtails = new frmAccountDetails();
+        dpnDesktop.add(myAccountDEtails);
+        myAccountDEtails.setData(myData);
+        myAccountDEtails.show();
 
     }
 

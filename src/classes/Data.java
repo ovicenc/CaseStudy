@@ -17,6 +17,10 @@ public class Data {
     private int countTransState = 0;
     //private String transactionState;
 
+    private int maxCustumerAccounts = 1000;
+    private CustAccount myCustAccount[] = new CustAccount[maxCustumerAccounts];
+    private int countCustAccount = 0;
+
 
     public Data(){
             //loadCreditCard(55044, 3, 2018);
@@ -67,6 +71,53 @@ public class Data {
         public int clearTransType(){
             return countTransType=0;
         }
+
+
+        public void loadAccountDetails(int customer_ss, String customer_email ){
+            try {
+                DBConnection conn = new DBConnection();
+                PreparedStatement statement = conn.getConnection().prepareStatement("SELECT * FROM CDW_SAPP_CUSTOMER WHERE CDW_SAPP_CUSTOMER.SSN = '"+customer_ss+"' OR CDW_SAPP_CUSTOMER.CUST_EMAIL = '"+customer_email+"'; ");
+                //PreparedStatement statement = conn.getConnection().prepareStatement("SELECT TRANSACTION_TYPE , SUM(TRANSACTION_VALUE) AS SUM_TRANS_VALUE,  COUNT(*) AS COUNT_TRANS FROM CDW_SAPP_CREDITCARD GROUP BY '"+transactionType+"';");
+                ResultSet result = statement.executeQuery();
+                CustAccount custAccount_1;
+
+                while(result.next()) {
+                    String first_name = result.getString("FIRST_NAME");
+                    String  middle_name = result.getString("MIDDLE_NAME");
+                    String  last_name = result.getString("LAST_NAME");
+                    int ssn = result.getInt("SSN");
+                    String  credit_card_no = result.getString("CREDIT_CARD_NO");
+                    int apt_no = result.getInt("APT_NO");
+                    String street_name = result.getString("STREET_NAME");
+                    String cust_city = result.getString("CUST_CITY");
+                    String cust_state = result.getString("CUST_STATE");
+                    String cust_country = result.getString("CUST_COUNTRY");
+                    int cust_zip = result.getInt("CUST_ZIP");
+                    int cust_phone = result.getInt("CUST_PHONE");
+                    String cust_email = result.getString("CUST_EMAIL");
+
+                    custAccount_1 = new CustAccount(first_name, middle_name, last_name, ssn, credit_card_no, apt_no, street_name, cust_city, cust_state, cust_country, cust_zip, cust_phone, cust_email);
+                    myCustAccount[countCustAccount] = custAccount_1;
+                    countCustAccount++;
+                }
+            }catch(Exception e){
+                System.out.println(e);
+            }
+        }
+
+    public int getNumberCustAccount(){
+        return countCustAccount;
+    }
+
+    public CustAccount[] getCustAccount(){
+        return myCustAccount;
+    }
+
+    public int clearCustAccount(){
+        return countCustAccount=0;
+    }
+
+
 
         public void loadQueryTransByState(String transactionState){
             //this.transactionType = transactionType;
