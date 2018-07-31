@@ -94,7 +94,7 @@ public class frmLogin extends JFrame {
         frmMain myMain = new frmMain();
         setVisible(false);
         myMain.setData(myData);
-        myMain.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //myMain.setExtendedState(JFrame.MAXIMIZED_BOTH);
         myMain.setVisible(true);
 
 

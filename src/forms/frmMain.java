@@ -42,8 +42,9 @@ public class frmMain extends JFrame {
         // Form properties
         setTitle("Bank System");
         setResizable(true);
-        setSize(700, 500);
+        setSize(1300, 900);
         setLayout(null);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Objects
@@ -192,10 +193,10 @@ public class frmMain extends JFrame {
     }
 
     private void mnuCustomerDetailsActionPerformed(ActionEvent e){
-        frmAccountDetails myAccountDEtails = new frmAccountDetails();
-        dpnDesktop.add(myAccountDEtails);
-        myAccountDEtails.setData(myData);
-        myAccountDEtails.show();
+        frmAccountDetails myAccountDetails = new frmAccountDetails();
+        dpnDesktop.add(myAccountDetails);
+        myAccountDetails.setData(myData);
+        myAccountDetails.show();
 
     }
 
@@ -218,10 +219,17 @@ public class frmMain extends JFrame {
     }
 
     private void mnuHelpAboutActionPerformed(ActionEvent e){
+        frmAbout myAbout = new frmAbout();
+        dpnDesktop.add(myAbout);
+        //myAbout(myData);
+        myAbout.show();
 
     }
 
     private void mnuHelpHelpActionPerformed(ActionEvent e){
+        frmHelp myHelp = new frmHelp();
+        dpnDesktop.add(myHelp);
+        myHelp.show();
 
     }
 
