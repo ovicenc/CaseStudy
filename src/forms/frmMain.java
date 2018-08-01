@@ -205,6 +205,10 @@ public class frmMain extends JFrame {
     }
 
     private void mnuCustomerMonthlyBillActionPerformed(ActionEvent e){
+        frmMonthlyBill myMonthlyBill = new frmMonthlyBill();
+        dpnDesktop.add(myMonthlyBill);
+        myMonthlyBill.setData(myData);
+        myMonthlyBill.show();
 
     }
 

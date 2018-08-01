@@ -21,6 +21,10 @@ public class Data {
     private CustAccount myCustAccount[] = new CustAccount[maxCustumerAccounts];
     private int countCustAccount = 0;
 
+    private int maxCustMonthlyBill = 1000;
+    private CustMonthly myCustMonthlyBill[] = new CustMonthly[maxCustMonthlyBill];
+    private int countCustMonthlyBill = 0;
+
 
     public Data(){
             //loadCreditCard(55044, 3, 2018);
@@ -203,5 +207,47 @@ public class Data {
         public int clearCreditCards(){
             return countCreditCard=0;
         }
+
+
+    public void loadCustMonthlyBill(String credit_card_no, int month, int year){
+        try{
+            //Connection conn = getConnection();
+            DBConnection conn = new DBConnection();
+            //PreparedStatement statement = conn.getConnection().prepareStatement("SELECT * FROM CDW_SAPP_CREDITCARD INNER JOIN CDW_SAPP_BRANCH ON CDW_SAPP_CREDITCARD.BRANCH_CODE = CDW_SAPP_BRANCH.BRANCH_CODE AND CDW_SAPP_BRANCH.BRANCH_ZIP='"+zipCode_+"' AND CDW_SAPP_CREDITCARD.MONTH = '"+month_+"' AND CDW_SAPP_CREDITCARD.YEAR = '"+year_+"';");
+
+            PreparedStatement statement = conn.getConnection().prepareStatement("SELECT CREDIT_CARD_NO, TRANSACTION_TYPE, TRANSACTION_VALUE FROM  CDW_SAPP_CREDITCARD WHERE cdw_sapp_creditcard.CREDIT_CARD_NO= '"+credit_card_no+"' AND cdw_sapp_creditcard.MONTH = '"+month+"' AND cdw_sapp_creditcard.YEAR  = '"+year+"';");
+            ResultSet result = statement.executeQuery();
+            CustMonthly custMonthly_1;
+            //ArrayList<String> array = new ArrayList<String>();
+
+            while(result.next()){
+                String credit_card_no_ = result.getString("CREDIT_CARD_NO");
+                String trans_type = result.getString("TRANSACTION_TYPE");
+                double trans_value = result.getDouble("TRANSACTION_VALUE");
+
+                custMonthly_1 = new CustMonthly(credit_card_no_,trans_type, trans_value);
+                myCustMonthlyBill[countCustMonthlyBill] = custMonthly_1;
+                countCustMonthlyBill++;
+
+            }
+            //System.out.println("All records have been selected");
+        } catch(Exception e){
+            System.out.println(e);
+        }
+
+    }
+
+
+    public int getNumberCustMonthlyBill(){
+        return countCustMonthlyBill;
+    }
+
+    public CustMonthly[] getCustMonthlyBill(){
+        return myCustMonthlyBill;
+    }
+
+    public int clearCustMonthlyBill(){
+        return countCustMonthlyBill=0;
+    }
 
 }
