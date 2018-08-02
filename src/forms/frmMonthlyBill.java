@@ -25,7 +25,6 @@ public class frmMonthlyBill extends JInternalFrame{
     //Atributes
     private Data myData;
     private DefaultTableModel myTable;
-    private int transAct = 0;
     private String months[] = {"Choose month: ","1 - January", "2 - February", "3 - March", "4 - April", "5 - May", "6 - June", "7 - July", "8 - August", "9 - September", "10 - October", "11 - November", "12 - December"};
 
 
@@ -144,8 +143,7 @@ public class frmMonthlyBill extends JInternalFrame{
     }
 
     private void forminternalFrameOpened(InternalFrameEvent e){
-            //loadTable();
-            //showRegister();
+
             enableFields();
     }
 
@@ -163,13 +161,6 @@ public class frmMonthlyBill extends JInternalFrame{
         tblTable.setModel(myTable);
     }
 
-    private void disableFields(){
-        btnSearch.setEnabled(false);
-
-        txtCreditCardNumber.setEnabled(false);
-        txtYear.setEnabled(false);
-
-    }
 
     private void enableFields(){
         btnSearch.setEnabled(true);
@@ -177,41 +168,6 @@ public class frmMonthlyBill extends JInternalFrame{
         txtCreditCardNumber.setEnabled(true);
         txtYear.setEnabled(true);
 
-    }
-
-    private void showRegister(){
-    }
-
-
-    private String name_month(int month){
-        switch (month) {
-            case 1:
-                return "January";
-            case 2:
-                return "February";
-            case 3:
-                return "March";
-            case 4:
-                return "April";
-            case 5:
-                return "May";
-            case 6:
-                return "June";
-            case 7:
-                return "July";
-            case 8:
-                return "August";
-            case 9:
-                return "September";
-            case 10:
-                return "October";
-            case 11:
-                return "November";
-            case 12:
-                return "December";
-            default: return "Error";
-
-        }
     }
 
     private void btnSearchActionPerformed(ActionEvent e) {
@@ -241,8 +197,7 @@ public class frmMonthlyBill extends JInternalFrame{
             }
         }
         ((DefaultTableModel)tblTable.getModel()).setRowCount(0);
-        myData.clearCreditCards();
-
+        myData.clearCustMonthlyBill();
     }
 
 }

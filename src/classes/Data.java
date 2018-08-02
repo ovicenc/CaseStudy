@@ -25,6 +25,10 @@ public class Data {
     private CustMonthly myCustMonthlyBill[] = new CustMonthly[maxCustMonthlyBill];
     private int countCustMonthlyBill = 0;
 
+    private int maxCustChoose = 1000;
+    private CustChoose myCustChoose[] = new CustChoose[maxCustChoose];
+    private int countCustChoose = 0;
+
 
     public Data(){
             //loadCreditCard(55044, 3, 2018);
@@ -249,5 +253,49 @@ public class Data {
     public int clearCustMonthlyBill(){
         return countCustMonthlyBill=0;
     }
+
+
+    public void loadCustChoose(String credit_card_no, int start_year, int start_month, int start_day, int end_year, int end_month, int end_day){
+        try{
+            //Connection conn = getConnection();
+            DBConnection conn = new DBConnection();
+            //PreparedStatement statement = conn.getConnection().prepareStatement("SELECT * FROM CDW_SAPP_CREDITCARD INNER JOIN CDW_SAPP_BRANCH ON CDW_SAPP_CREDITCARD.BRANCH_CODE = CDW_SAPP_BRANCH.BRANCH_CODE AND CDW_SAPP_BRANCH.BRANCH_ZIP='"+zipCode_+"' AND CDW_SAPP_CREDITCARD.MONTH = '"+month_+"' AND CDW_SAPP_CREDITCARD.YEAR = '"+year_+"';");
+
+            //PreparedStatement statement = conn.getConnection().prepareStatement("SELECT CREDIT_CARD_NO, TRANSACTION_TYPE, TRANSACTION_VALUE FROM  CDW_SAPP_CREDITCARD WHERE cdw_sapp_creditcard.CREDIT_CARD_NO= '"+credit_card_no+"' AND cdw_sapp_creditcard.MONTH = '"+month+"' AND cdw_sapp_creditcard.YEAR  = '"+year+"';");
+
+            PreparedStatement statement = conn.getConnection().prepareStatement("SELECT CREDIT_CARD_NO, TRANSACTION_TYPE, TRANSACTION_VALUE FROM cdw_sapp_creditcard WHERE cdw_sapp_creditcard.CREDIT_CARD_NO = '"+credit_card_no+"' AND cdw_sapp_creditcard.YEAR BETWEEN '"+start_year+"' AND '"+end_year+"' AND cdw_sapp_creditcard.MONTH BETWEEN '"+start_month+"' AND '"+end_month+"' AND cdw_sapp_creditcard.DAY BETWEEN '"+start_day+"' AND '"+end_day+"';");
+            ResultSet result = statement.executeQuery();
+            CustChoose custChoose_1;
+            //ArrayList<String> array = new ArrayList<String>();
+
+            while(result.next()){
+                String credit_card_no_ = result.getString("CREDIT_CARD_NO");
+                String trans_type = result.getString("TRANSACTION_TYPE");
+                double trans_value = result.getDouble("TRANSACTION_VALUE");
+
+                custChoose_1 = new CustChoose(credit_card_no_,trans_type, trans_value);
+                myCustChoose[countCustChoose] = custChoose_1;
+                countCustChoose++;
+
+            }
+            //System.out.println("All records have been selected");
+        } catch(Exception e){
+            System.out.println(e);
+        }
+
+    }
+
+    public int getNumberCustChoose(){
+        return countCustChoose;
+    }
+
+    public CustChoose[] getCustChoose(){
+        return myCustChoose;
+    }
+
+    public int clearCustChoose(){
+        return countCustChoose=0;
+    }
+
 
 }

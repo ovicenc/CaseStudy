@@ -213,6 +213,10 @@ public class frmMain extends JFrame {
     }
 
     private void mnuCustomerTransactionBetweenTwoDaysActionPerformed(ActionEvent e){
+        frmChooseDates myChooseDates = new frmChooseDates();
+        dpnDesktop.add(myChooseDates);
+        myChooseDates.setData(myData);
+        myChooseDates.show();
 
     }
 
