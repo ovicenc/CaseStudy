@@ -1,2 +1,1 @@
-PerScholas Case Study
-Data Engineering Course 2018
+PerScholas Case Study <br /> Data Engineering Course 2018 <br />
