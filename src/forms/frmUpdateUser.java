@@ -40,6 +40,9 @@ public class frmUpdateUser extends JInternalFrame{
     private JTextField txtLastUpdate;
     private JButton btnUpdate;
 
+    private Data myData;
+    public void setData(Data data){myData = data;}
+
     public frmUpdateUser() {
         //From properties
         setClosable(true);
@@ -47,7 +50,7 @@ public class frmUpdateUser extends JInternalFrame{
         setResizable(false);
         setTitle("Update User");
         setLayout(null);
-        setSize(970, 450);
+        setSize(500, 600);
 
         lblMessage = new JLabel("Update a User");
         lblFirstName = new JLabel("First Name: ");
@@ -64,17 +67,17 @@ public class frmUpdateUser extends JInternalFrame{
         txtAptNo = new JTextField();
         lblStreetName = new JLabel("Street Name: ");
         txtStreetName = new JTextField();
-        lblCustCity = new JLabel("Customer City: ");
+        lblCustCity = new JLabel("Cust. City: ");
         txtCustCity = new JTextField();
-        lblCustState = new JLabel("Customer State: ");
+        lblCustState = new JLabel("Cust. State: ");
         txtCustState = new JTextField();
-        lblCustCountry = new JLabel("Customer City: ");
+        lblCustCountry = new JLabel("Cust. City: ");
         txtCustCountry = new JTextField();
-        lblCustZip = new JLabel("Customer Zip: ");
+        lblCustZip = new JLabel("Cust. Zip: ");
         txtCustZip = new JTextField();
-        lblCustPhone = new JLabel("Customer Phone: ");
+        lblCustPhone = new JLabel("Cust. Phone: ");
         txtCustPhone = new JTextField();
-        lblCustEmail = new JLabel("Customer Email: ");
+        lblCustEmail = new JLabel("Cust. Email: ");
         txtCustEmail = new JTextField();
         btnUpdate = new JButton("Update");
 
@@ -98,7 +101,9 @@ public class frmUpdateUser extends JInternalFrame{
         add(lblCustCity);
         add(txtCustCity);
         add(lblCustState);
-        add(txtCustCity);
+        add(txtCustState);
+        add(lblCustCountry);
+        add(txtCustCountry);
         add(lblCustZip);
         add(txtCustZip);
         add(lblCustPhone);
@@ -121,20 +126,20 @@ public class frmUpdateUser extends JInternalFrame{
         lblAptNo.reshape(20, 190, 110, 20);
         txtAptNo.reshape(130, 190, 150, 20);
         lblStreetName.reshape(20, 220, 110, 20);
-        txtStreetName.reshape(20, 220, 150, 20);
+        txtStreetName.reshape(130, 220, 150, 20);
         lblCustCity.reshape(20, 250, 110, 20);
-        txtCustCity.reshape(20, 250, 150, 20);
+        txtCustCity.reshape(130, 250, 150, 20);
         lblCustState.reshape(20, 280, 110, 20);
-        txtCustState.reshape(20, 280, 150, 20);
+        txtCustState.reshape(130, 280, 150, 20);
         lblCustCountry.reshape(20, 310, 110, 20);
-        txtCustCountry.reshape(20, 310, 150, 20);
+        txtCustCountry.reshape(130, 310, 150, 20);
         lblCustZip.reshape(20, 340, 110, 20);
-        txtCustZip.reshape(20, 340, 150, 20);
+        txtCustZip.reshape(130, 340, 150, 20);
         lblCustPhone.reshape(20, 370,110, 20);
-        txtCustPhone.reshape(20, 370, 150, 20);
-        lblCustEmail.reshape(20, 410,110, 20);
-        txtCustEmail.reshape(20, 410, 150, 20);
-        btnUpdate.reshape(20, 450, 65, 35);
+        txtCustPhone.reshape(130, 370, 150, 20);
+        lblCustEmail.reshape(20, 400,110, 20);
+        txtCustEmail.reshape(130, 400, 150, 20);
+        btnUpdate.reshape(20, 470, 65, 35);
 
         //Form events
         addInternalFrameListener(new InternalFrameListener() {
@@ -190,9 +195,19 @@ public class frmUpdateUser extends JInternalFrame{
 
     private void enableFields(){
         btnUpdate.setEnabled(true);
-
+        txtFirstName.setEnabled(true);
+        txtMiddleName.setEnabled(true);
+        txtLastName.setEnabled(true);
+        txtSsn.setEnabled(true);
         txtCreditCardNumber.setEnabled(true);
-        txtYear.setEnabled(true);
+        txtAptNo.setEnabled(true);
+        txtStreetName.setEnabled(true);
+        txtCustCity.setEnabled(true);
+        txtCustState.setEnabled(true);
+        txtCustCountry.setEnabled(true);
+        txtCustZip.setEnabled(true);
+        txtCustPhone.setEnabled(true);
+        txtCustEmail.setEnabled(true);
 
     }
 
@@ -200,16 +215,72 @@ public class frmUpdateUser extends JInternalFrame{
         //enableFields();
 
         //Validate fields
+        if (txtFirstName.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please type first name");
+            txtFirstName.requestFocusInWindow();
+            return;
+        }
+        if (txtMiddleName.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please type middle name");
+            txtMiddleName.requestFocusInWindow();
+            return;
+        }
+        if (txtLastName.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please type last name");
+            txtLastName.requestFocusInWindow();
+            return;
+        }
+        if (txtSsn.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please type SSN");
+            txtSsn.requestFocusInWindow();
+            return;
+        }
         if (txtCreditCardNumber.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Please type credit card number");
             txtCreditCardNumber.requestFocusInWindow();
             return;
         }
-        if (txtYear.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Please enter a year");
-            txtYear.requestFocusInWindow();
+        if (txtAptNo.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please type Apartment No");
+            txtAptNo.requestFocusInWindow();
             return;
         }
+        if (txtStreetName.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please type Street name");
+            txtStreetName.requestFocusInWindow();
+            return;
+        }
+        if (txtCustCity.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please type a city");
+            txtCustCity.requestFocusInWindow();
+            return;
+        }
+        if (txtCustState.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please type a state");
+            txtCustState.requestFocusInWindow();
+            return;
+        }
+        if (txtCustCountry.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please type a country");
+            txtCustCountry.requestFocusInWindow();
+            return;
+        }
+        if (txtCustZip.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please type zip code");
+            txtCustZip.requestFocusInWindow();
+            return;
+        }
+        if (txtCustPhone.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please type a phone number");
+            txtCustPhone.requestFocusInWindow();
+            return;
+        }
+        if (txtCustEmail.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please type an email");
+            txtCustEmail.requestFocusInWindow();
+            return;
+        }
+        myData.loadCustUpdate(txtFirstName.getText(), txtMiddleName.getText(), txtLastName.getText(), Integer.parseInt(txtSsn.getText()), txtCreditCardNumber.getText(), Integer.parseInt(txtAptNo.getText()), txtStreetName.getText(), txtCustCity.getText(), txtCustState.getText(), txtCustCountry.getText(), txtCustZip.getText(), txtCustPhone.getText(), txtCustEmail.getText());
 
     }
 

@@ -201,6 +201,10 @@ public class frmMain extends JFrame {
     }
 
     private  void mnuCustomerUpdateActionPerformed(ActionEvent e){
+        frmUpdateUser myUpdateUser = new frmUpdateUser();
+        dpnDesktop.add(myUpdateUser);
+        myUpdateUser.setData(myData);
+        myUpdateUser.show();
 
     }
 

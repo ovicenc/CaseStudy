@@ -1,5 +1,6 @@
 package classes;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -295,6 +296,26 @@ public class Data {
 
     public int clearCustChoose(){
         return countCustChoose=0;
+    }
+
+
+    public void loadCustUpdate(String first_name, String middle_name, String last_name, int ssn, String credit_card_no, int apt_no, String street_name, String cust_city, String cust_state, String cust_country, String zip_code, String phone, String email){
+        try{
+            //Connection conn = getConnection();
+            DBConnection conn = new DBConnection();
+            //PreparedStatement statement = conn.getConnection().prepareStatement("SELECT * FROM CDW_SAPP_CREDITCARD INNER JOIN CDW_SAPP_BRANCH ON CDW_SAPP_CREDITCARD.BRANCH_CODE = CDW_SAPP_BRANCH.BRANCH_CODE AND CDW_SAPP_BRANCH.BRANCH_ZIP='"+zipCode_+"' AND CDW_SAPP_CREDITCARD.MONTH = '"+month_+"' AND CDW_SAPP_CREDITCARD.YEAR = '"+year_+"';");
+
+            //PreparedStatement statement = conn.getConnection().prepareStatement("SELECT CREDIT_CARD_NO, TRANSACTION_TYPE, TRANSACTION_VALUE FROM  CDW_SAPP_CREDITCARD WHERE cdw_sapp_creditcard.CREDIT_CARD_NO= '"+credit_card_no+"' AND cdw_sapp_creditcard.MONTH = '"+month+"' AND cdw_sapp_creditcard.YEAR  = '"+year+"';");
+
+            PreparedStatement statement = conn.getConnection().prepareStatement("UPDATE CDW_SAPP_CUSTOMER SET cdw_sapp_customer.FIRST_NAME = '"+first_name+"', cdw_sapp_customer.MIDDLE_NAME = '"+middle_name+"', cdw_sapp_customer.LAST_NAME = '"+last_name+"', cdw_sapp_customer.SSN = '"+ssn+"', cdw_sapp_customer.CREDIT_CARD_NO = '"+credit_card_no+"', cdw_sapp_customer.APT_NO = '"+apt_no+"', cdw_sapp_customer.STREET_NAME = '"+street_name+"',  cdw_sapp_customer.CUST_CITY = '"+cust_city+"', cdw_sapp_customer.CUST_STATE = '"+cust_state+"',  cdw_sapp_customer.CUST_COUNTRY = '"+cust_country+"', cdw_sapp_customer.CUST_ZIP = '"+zip_code+"',   cdw_sapp_customer.CUST_PHONE = '"+phone+"', cdw_sapp_customer.CUST_EMAIL = '"+email+"';");
+
+            ResultSet result = statement.executeQuery();
+            JOptionPane.showMessageDialog(null, "Customer Updated ");
+
+        } catch(Exception e){
+            System.out.println(e);
+        }
+
     }
 
 
