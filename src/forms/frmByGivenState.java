@@ -22,7 +22,7 @@ public class frmByGivenState extends JInternalFrame {
     private Data myData;
     private DefaultTableModel myTable;
     private int transAct = 0;
-    private String TransactionState[] = {"Choose a State: ","AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", "IN"};
+    private String TransactionState[] = {"Choose a State: ","AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"};
 
     //Methods
     public void setData(Data data){
