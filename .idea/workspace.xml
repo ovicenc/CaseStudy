@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="94c7b186-e90f-4c6e-a1b9-0c3258f657d1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CaseStudy_/classes/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CaseStudy_/classes/Data.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/forms/frmByGivenState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/forms/frmByGivenState.java" afterDir="false" />
-    </list>
+    <list default="true" id="94c7b186-e90f-4c6e-a1b9-0c3258f657d1" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +32,7 @@
     <session id="1589506491">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.18" value="2" />
           <entry key="project.open.time.20" value="1" />
@@ -371,12 +366,12 @@
       <workItem from="1533263647632" duration="5349000" />
       <workItem from="1533589987072" duration="5637000" />
       <workItem from="1533659738965" duration="4425000" />
-      <workItem from="1533680127812" duration="405000" />
+      <workItem from="1533680127812" duration="606000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133040000" />
+    <option name="totallyTimeSpent" value="133241000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="127" y="23" width="1675" height="907" extended-state="0" />
@@ -391,7 +386,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32883435" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32883435" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32883435" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39975992" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
